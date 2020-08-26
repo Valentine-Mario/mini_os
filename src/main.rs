@@ -33,6 +33,13 @@ pub extern "C" fn _start() -> ! {
     vga_buffer::WRITER.lock().write_str("Hello again").unwrap();
     write!(vga_buffer::WRITER.lock(), ", some numbers: {} {}", 42, 1.337).unwrap();
     println!("Hello World{}", "!");
+
+    //invoke exception
+    mini_os::init();
+    //x86_64::instructions::interrupts::int3(); 
+   
+    
+    println!("got here");
     #[cfg(test)]
     test_main();
 //    panic!("panic message");
