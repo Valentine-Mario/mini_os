@@ -14,7 +14,7 @@ mod serial;
 #[panic_handler]
 fn panic(info: &PanicInfo) -> ! {
     println!("{}", info);
-    loop {}
+    mini_os::hlt_loop();
 }
 
 // our panic handler in test mode
@@ -43,7 +43,7 @@ pub extern "C" fn _start() -> ! {
     #[cfg(test)]
     test_main();
 //    panic!("panic message");
-    loop {}
+    mini_os::hlt_loop();
 }
 
 #[test_case]
